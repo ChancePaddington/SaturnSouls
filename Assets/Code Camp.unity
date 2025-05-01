@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &23645260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 23645261}
+  m_Layer: 0
+  m_Name: Laser Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &23645261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23645260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.204, y: 0.944, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 774340869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &29999272
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +829,8 @@ Transform:
   m_LocalPosition: {x: 0.05, y: 4.9, z: 0}
   m_LocalScale: {x: 2.3071845, y: 2.267099, z: 1.7}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 23645261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 179.981}
 --- !u!114 &774340870
@@ -813,6 +845,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dfb6eb36114d844b913c4565a24345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rocketPrefab: {fileID: 7338467992025419840, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+  firingPoint: {fileID: 23645261}
+  fireRate: 0.5
+  speed: 10
+  lifeTime: 4
 --- !u!61 &774340871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1447,6 +1484,25 @@ Transform:
   - {fileID: 983900468}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1641262635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7338467992025419840, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+  m_PrefabInstance: {fileID: 9200794697156421623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1641262636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641262635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022f4ecdf6ae3544cb3df81f0cc9ea0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  lifeTime: 6
 --- !u!1 &1655514298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,6 +1892,78 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18d2219436a8ad64c82b7517a37c24c0, type: 3}
+--- !u!1001 &9200794697156421623
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3692251
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3692251
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3692251
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0077479635
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.99997
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414855847541502882, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 179.112
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338467992025419840, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      propertyPath: m_Name
+      value: Boss Laser
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7338467992025419840, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1641262636}
+  m_SourcePrefab: {fileID: 100100000, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1852,3 +1980,4 @@ SceneRoots:
   - {fileID: 1655514302}
   - {fileID: 29999276}
   - {fileID: 901224147}
+  - {fileID: 9200794697156421623}
