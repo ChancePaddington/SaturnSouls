@@ -4,7 +4,9 @@ using System.Collections;
 public class Rocket : MonoBehaviour
 {
     [Range(1, 10)]
-    [SerializeField] private float speed = 20f;
+    [SerializeField] private float speed = 10f;
+
+    [Range(1, 10)]
     [SerializeField] private float lifeTime = 6f;
 
     private Rigidbody2D rb;
