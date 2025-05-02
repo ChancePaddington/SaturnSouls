@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-        private void Shoot()
+        public void Shoot()
         {
         Instantiate(rocketPrefab, firingPoint.position, firingPoint.rotation);
         }

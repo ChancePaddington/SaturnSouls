@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading;
 using UnityEngine;
 
@@ -10,30 +11,22 @@ public class Boss : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifeTime = 4f;
-    private float timer;
-    private Rigidbody2D rb;
+    private float timer = 2f;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = transform.up * speed;
-        //Destroys rocket when life time expires
-        Destroy(gameObject, lifeTime);
+        StartCoroutine(Shoot(timer));
+        Debug.Log("Coroutine Check");
     }
 
-    private void Update()
+    private IEnumerator Shoot(float timePeriod)
     {
-        timer += Time.deltaTime;
-
-        if(timer > 2)
+        while (true)
         {
-            timer = 0;
-            Shoot();
+            Instantiate(rocketPrefab, firingPoint.position, firingPoint.rotation);
+            Debug.Log("1212");
+            yield return new WaitForSeconds(timePeriod);
         }
-    }
-    private void Shoot()
-    {
-        Instantiate(rocketPrefab, firingPoint.position, firingPoint.rotation);
-    }
+    } 
 
 }
