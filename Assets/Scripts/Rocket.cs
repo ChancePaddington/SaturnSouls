@@ -28,6 +28,22 @@ public class Rocket : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+
+        //Rocognise if rocket hits Minion class collider
+        if (collision.gameObject.GetComponent<Minion>() != null)
+        {
+            //Destroys Minion sprite on collision
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
+        //Recognise if rocket hits Turret class collider
+        if (collision.gameObject.GetComponent<Turret>() != null)
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
     }
 
 }
