@@ -4,7 +4,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     private float laserTimer = 2f;
-    private GameObject player;
+    //private GameObject player;
     [SerializeField] private GameObject rocketPrefab;
     [SerializeField] private Transform firingPoint;
 
@@ -13,7 +13,7 @@ public class Turret : MonoBehaviour
         //Contols the amount of time between laser shots
         StartCoroutine(Shoot(laserTimer));
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private IEnumerator Shoot(float timePeriod)
@@ -26,5 +26,4 @@ public class Turret : MonoBehaviour
             yield return new WaitForSeconds(timePeriod);
         }
     }
-
 }

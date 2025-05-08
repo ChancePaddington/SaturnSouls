@@ -7,86 +7,134 @@ public class Minion : MonoBehaviour
 {
     [Range(1, 10)]
     [SerializeField] private float speed = 10f;
+    [SerializeField] private List<GameObject> waypoints = new List<GameObject>();
 
-    private GameObject waypointA;
-    private GameObject waypointB;
+    //private GameObject waypointA;
+    //private GameObject waypointB;
     private Rigidbody2D rb;
     private Boss boss;
-    private Vector2 currentTarget;
+    public MinionWaypoints minionWaypoints;
+   // private Vector2 currentTarget;
     public float force = 1.0f;
     public float waitingAtWaypoint = 3f;
-    private bool currentWaypoint;
+    //private bool currentWaypoint;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = transform.up * speed;
+        //rb.linearVelocity = transform.up * speed;
         //Finds the game object with the tag to move to
-        waypointA = GameObject.FindGameObjectWithTag("Minion Waypoint A");
-        waypointB = GameObject.FindGameObjectWithTag("Minion Waypoint B");
+        //(For later) Add to boss family and call from the boss class 
+        //waypointA = GameObject.FindGameObjectWithTag("Minion Waypoint A");
+        //waypointB = GameObject.FindGameObjectWithTag("Minion Waypoint B");
 
         boss = FindAnyObjectByType<Boss>();
+        minionWaypoints = GetComponent<MinionWaypoints>();
 
-        Vector3 direction = waypointA.transform.position - transform.position;
-        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+        //Vector3 direction = minionWaypoints.transform.position - transform.position;
+        //rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
 
-        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rot);
+        //float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+        //transform.rotation = Quaternion.Euler(0, 0, rot);
+
+        foreach (var waypoint in GetComponent<MinionWaypoints>().waypoints)
+        {
+            waypoints.Add(waypoint);
+        }
 
     }
 
     public void Update()
     {
+        StartCoroutine(SwitchTargetPosition(waitingAtWaypoint));
+
         //Get the distance between the minion and the waypoint
-        float distanceToTarget = Vector3.Distance(transform.position, waypointA.transform.position);
+        //float distanceToTarget = Vector3.Distance(transform.position, waypoint.transform.position);
 
-        //If this is within a threshold (e.g. 0.1f)
-        bool isCloseToTarget = distanceToTarget < 0.2f;
+        ////If this is within a threshold (e.g. 0.1f)
+        //bool isCloseToTarget = distanceToTarget < 0.2f;
 
-        //We have arrived! So set the linear velocity to zero
-        if (isCloseToTarget)
-        {
-            rb.linearVelocity = Vector2.zero;
+        ////We have arrived! So set the linear velocity to zero
+        //if (isCloseToTarget)
+        //{
+        //    rb.linearVelocity = Vector2.zero;
 
-            StartCoroutine(SwitchTargetPosition(waitingAtWaypoint));
-        }
-
+        //}
     }
 
     public IEnumerator SwitchTargetPosition(float timePeriod)
     {
-        float distanceToTargetA = Vector3.Distance(transform.position, waypointA.transform.position);
-        bool isCloseToTargetA = distanceToTargetA < 0.2f;
 
-        if (isCloseToTargetA)
+        for (int i = 0; i < waypoints.Count; i++)
         {
+            // iterate across the list
+            MoveToTarget(waypoints[i]);
             yield return new WaitForSeconds(timePeriod);
-            rb = GetComponent<Rigidbody2D>();
-            rb.linearVelocity = transform.up * speed;
-            Vector3 direction = waypointB.transform.position - transform.position;
-            rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
-
         }
-
-
-        float distanceToTargetB = Vector3.Distance(transform.position, waypointB.transform.position);
-        bool isCloseToTargetB = distanceToTargetB < 0.2f;
-
-        if (isCloseToTargetB)
-        {
-            yield return new WaitForSeconds(timePeriod);
-            rb = GetComponent<Rigidbody2D>();
-            rb.linearVelocity = transform.up * speed;
-            Vector3 direction = waypointA.transform.position - transform.position;
-            rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
-        }
-
     }
+    public void MoveToTarget(GameObject waypoint)
+    {
+        float distanceToCurrentTarget = Vector3.Distance(transform.position, waypoint.transform.position);
+        bool isCloseToCurrentTarget = distanceToCurrentTarget < 0.2f;
+        bool isCloseToNextTarget = distanceToCurrentTarget > 0.2f;
+        // think of if statement for transitioning from last waypoint back to the beginning
+        if (isCloseToCurrentTarget)
+        {
+            rb = GetComponent<Rigidbody2D>();
+
+            rb.linearVelocity = transform.up * speed;
+            Vector3 direction = waypoint.transform.position - transform.position;
+            rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+
+            float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, rot);
+        }
+
+        if (isCloseToNextTarget)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+
     private void OnDestroy()
     {
         boss.currentMinion = 0; 
     }
+
 }
+
+        //float distanceToTargetA = Vector3.Distance(transform.position, waypointA.transform.position);
+        //bool isCloseToTargetA = distanceToTargetA < 0.2f;
+
+        //if (isCloseToTargetA)
+       // {
+           // yield return new WaitForSeconds(timePeriod);
+           //rb = GetComponent<Rigidbody2D>();
+           // rb.linearVelocity = transform.up * speed;
+            //Vector3 direction = waypointB.transform.position - transform.position;
+            //rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+
+        //}
+
+
+        //float distanceToTargetB = Vector3.Distance(transform.position, waypointB.transform.position);
+       // bool isCloseToTargetB = distanceToTargetB < 0.2f;
+
+        //if (isCloseToTargetB)
+        //{
+           // Debug.Log("Needs to wait");
+           // yield return new WaitForSeconds(timePeriod);
+           // Debug.Log(timePeriod);
+           // Debug.Log("Has waited");
+           // rb = GetComponent<Rigidbody2D>();
+           // rb.linearVelocity = transform.up * speed;
+          //  Vector3 direction = waypointA.transform.position - transform.position;
+           // rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+        //}
+
+    //}
+
+//}
 
     //Get minion to move between waypoints
 

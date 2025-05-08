@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Minion Waypoint
+  - Minion Waypoint A
+  - Minion Waypoint B
   layers:
   - Default
   - TransparentFX

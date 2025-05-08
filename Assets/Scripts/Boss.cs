@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    private GameObject player;
+    //private GameObject player;
 
     //Rocket variables
     [SerializeField] private GameObject rocketPrefab;
@@ -27,7 +27,7 @@ public class Boss : MonoBehaviour
         //Contols the amount of time between laser shots
         StartCoroutine(Shoot(laserTimer));
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
     }
 
     //Update function which checks if the current minion variable has no value i.e. there is no minion
