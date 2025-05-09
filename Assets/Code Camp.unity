@@ -673,6 +673,8 @@ GameObject:
   - component: {fileID: 682293701}
   - component: {fileID: 682293703}
   - component: {fileID: 682293702}
+  - component: {fileID: 682293704}
+  - component: {fileID: 682293705}
   m_Layer: 9
   m_Name: Shield
   m_TagString: Untagged
@@ -796,6 +798,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &682293704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682293700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf5205650a55fd4a8970d9cdf6da4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 5
+--- !u!114 &682293705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682293700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5502878767e3b4798a77de385493c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  maxHealth: 2
+  currentHealth: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 682293704}
+        m_TargetAssemblyTypeName: Shield, Assembly-CSharp
+        m_MethodName: DeactivateWithCooldown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &693367666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,6 +1048,9 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   maxHealth: 12
   currentHealth: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &901224145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,7 +1518,7 @@ MonoBehaviour:
   rocketPrefab: {fileID: 6590581762839979626, guid: 18d2219436a8ad64c82b7517a37c24c0, type: 3}
   firingPoint: {fileID: 119476544}
   fireRate: 0.9
-  shieldSprite: {fileID: 682293700}
+  shield: {fileID: 682293704}
 --- !u!212 &1079079607
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1559,6 +1607,21 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   maxHealth: 30
   currentHealth: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1079079606}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Deactivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!60 &1079079610
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1958,6 +2021,9 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   maxHealth: 2
   currentHealth: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1649109999
 GameObject:
   m_ObjectHideFlags: 0

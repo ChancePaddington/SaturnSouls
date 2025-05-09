@@ -2,34 +2,58 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    public GameObject playerShip;
-    public Renderer shield;
-    public Collider2D shieldCollider;
+    [SerializeField] private float cooldown = 1f;
 
-    //Shield variables
-    public int currentHealth;
-    public int maxHealth  = 50;
-    public float damageToShield;
-    public float regenPerSec = 0.1f;
-    public bool shieldUp = false;
-    private int energy = 100;
-    private int damage = 5;
+    private bool isActive = false;
+    private bool canActivate = true;
+    private float timeSinceDeactivation = 0f;
 
     private void Start()
     {
-        shield = GetComponent<SpriteRenderer>();
-        shieldCollider = GetComponent<Collider2D>();
-
+        Activate(false);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        
+        if (canActivate) { return; }
+
+        //Debug.Log($"delta time: {Time.deltaTime} - time since deactivation: {timeSinceDeactivation}");
+
+        timeSinceDeactivation += Time.deltaTime;
+        // same as "timeSinceDeactivation = timeSinceDeactivation + Time.deltaTime;"
+
+        if (timeSinceDeactivation >= cooldown)
+        {
+            canActivate = true;
+        }
     }
 
-    public void OnTriggerEnter2D(Collider2D otherCollider)
+    public void TryActivate()
     {
-      
+        if (canActivate)
+        {
+            Activate(true);
+        }
     }
 
+    public void DeactivateWithCooldown()
+    {
+        timeSinceDeactivation = 0f;
+        Deactivate();
+    }
+
+    public void Deactivate()
+    {
+        if (!isActive) { return; }
+
+        canActivate = false;
+        Activate(false);
+    }
+
+    private void Activate(bool enabled)
+    {
+        isActive = enabled;
+        GetComponent<SpriteRenderer>().enabled = enabled;
+        GetComponent<BoxCollider2D>().enabled = enabled;
+    }
 }

@@ -120,6 +120,11 @@ public class Minion : MonoBehaviour
         }
     }
 
+    public void Deactivate()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnDestroy()
     {
         boss.currentMinion = 0; 

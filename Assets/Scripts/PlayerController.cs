@@ -24,13 +24,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
 
     //Shield variables
-    [SerializeField] private GameObject shieldSprite;
+    [SerializeField] private Shield shield;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        shieldSprite.SetActive(false);
     }
 
     private void Update()
@@ -59,21 +57,30 @@ public class PlayerController : MonoBehaviour
         }
 
         //Create a bool to talk with Shield class re: shield regen
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            shieldSprite.SetActive(true);
-        }
-
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            shieldSprite.SetActive(false);
-            Debug.Log("Shield off");
-        }
+        HandleShieldInput();
 
     }
+
+    public void HandleShieldInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            shield.TryActivate();
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            shield.Deactivate();
+        }
+    }
+
     public void Shoot()
     {
         Instantiate(rocketPrefab, firingPoint.position, firingPoint.rotation);
+    }
+
+    public void Deactivate()
+    {
+        Destroy(gameObject);
     }
 
 }

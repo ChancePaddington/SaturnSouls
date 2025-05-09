@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
@@ -9,6 +10,8 @@ public class Health : MonoBehaviour
     //Variables
     public int maxHealth = 100;
     public int currentHealth;
+
+    public UnityEvent onDeath;
 
     private void Start()
     {
@@ -22,12 +25,7 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         if (currentHealth <= 0)
         {
-            Die();
+            onDeath?.Invoke();
         }
-    }
-
-    public void Die()
-    {
-        Destroy(gameObject);
     }
 }

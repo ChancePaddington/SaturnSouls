@@ -36,55 +36,14 @@ public class BossLaser : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        //Recognises if rocket hits PlayerController class collider
-        if (otherCollider.GetComponent<PlayerController>() != null)
+        //Call Health class to deal damage to health bar
+        Health health = otherCollider.GetComponent<Health>();
+        if (health != null)
         {
-            //Call Health class to deal damage to health bar
-            Health health = otherCollider.GetComponent<Health>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
-
-            Destroy(gameObject);
+            health.TakeDamage(damage);
         }
 
-        if (otherCollider.GetComponent<Turret>() != null)
-        {
-            //Call Health class to deal damage to health bar
-            Health health = otherCollider.GetComponent<Health>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
-
-            Destroy(gameObject);
-        }
-
-        if (otherCollider.GetComponent<Minion>() != null)
-        {
-            //Call Health class to deal damage to health bar
-            Health health = otherCollider.GetComponent<Health>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
-
-            Destroy(gameObject);
-        }
-
-        if (otherCollider.GetComponent<Boss>() != null)
-        {
-            //Call Health class to deal damage to health bar
-            Health health = otherCollider.GetComponent<Health>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
-
-            Destroy(gameObject);
-        }
-
+        Destroy(gameObject);
     }
 
 }
