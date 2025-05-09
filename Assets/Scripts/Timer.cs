@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        targetTime = Time.deltaTime;
+        targetTime -= Time.deltaTime;
 
         if (targetTime <= 0 )
         {
