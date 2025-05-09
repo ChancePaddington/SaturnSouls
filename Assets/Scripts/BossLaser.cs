@@ -11,12 +11,19 @@ public class BossLaser : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject player;
     public float force = 1.0f;
+    public int damage = 3;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.up * speed;
         player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         Vector3 direction = player.transform.position - transform.position;
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
@@ -27,16 +34,50 @@ public class BossLaser : MonoBehaviour
         //Destroys sprite after lifeTime expires
         Destroy(gameObject, lifeTime);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        Debug.Log(collision.name);
-        //Recognises if rocket hits Boss class collider
-        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        //Recognises if rocket hits PlayerController class collider
+        if (otherCollider.GetComponent<PlayerController>() != null)
         {
-            //Destroys Boss sprite on collision
-            Destroy(collision.gameObject);
+            //Call Health class to deal damage to health bar
+            Health health = otherCollider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+
             Destroy(gameObject);
         }
+
+        if (otherCollider.GetComponent<Turret>() != null)
+        {
+            //Call Health class to deal damage to health bar
+            Health health = otherCollider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+
+            Destroy(gameObject);
+        }
+
+        if (otherCollider.GetComponent<Minion>() != null)
+        {
+            //Call Health class to deal damage to health bar
+            Health health = otherCollider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+
+            Destroy(gameObject);
+        }
+
+        if (otherCollider.GetComponent<Boss>() != null)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 }

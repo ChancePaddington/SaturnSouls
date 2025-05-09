@@ -106,6 +106,7 @@ MonoBehaviour:
   speed: 3.75
   lifeTime: 6
   force: 5
+  damage: 3
 --- !u!50 &5606188987325727314
 Rigidbody2D:
   serializedVersion: 5

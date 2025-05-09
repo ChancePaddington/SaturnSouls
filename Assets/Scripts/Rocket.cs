@@ -10,6 +10,7 @@ public class Rocket : MonoBehaviour
     [SerializeField] private float lifeTime = 6f;
 
     private Rigidbody2D rb;
+    public int damage = 2;
 
     private void Start()
     {
@@ -19,28 +20,44 @@ public class Rocket : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D otherCollider)
     {
         //Recognises if rocket hits Boss class collider
-        if (collision.gameObject.GetComponent<Boss>() != null)
+        if (otherCollider.gameObject.GetComponent<Boss>() != null)
         {
-            //Destroys Boss sprite on collision
-            Destroy(collision.gameObject);
+            //Call Health class to deal damage to health bar
+            Health health = otherCollider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+
             Destroy(gameObject);
         }
 
         //Rocognise if rocket hits Minion class collider
-        if (collision.gameObject.GetComponent<Minion>() != null)
+        if (otherCollider.gameObject.GetComponent<Minion>() != null)
         {
-            //Destroys Minion sprite on collision
-            Destroy(collision.gameObject);
+            //Call Health class to deal damage to health bar
+            Health health = otherCollider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+
             Destroy(gameObject);
         }
 
         //Recognise if rocket hits Turret class collider
-        if (collision.gameObject.GetComponent<Turret>() != null)
+        if (otherCollider.gameObject.GetComponent<Turret>() != null)
         {
-            Destroy(collision.gameObject);
+            //Call Health class to deal damage to health bar
+            Health health = otherCollider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+
             Destroy(gameObject);
         }
 

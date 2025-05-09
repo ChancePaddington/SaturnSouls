@@ -11,10 +11,9 @@ public class Minion : MonoBehaviour
     [SerializeField] private float lifeTime = 6f;
     //[SerializeField] private List<GameObject> waypoints = new List<GameObject>();
 
-    //private GameObject waypointA;
-    //private GameObject waypointB;
     private Rigidbody2D rb;
     private Boss boss;
+    public int damage = 10;
     //public MinionWaypoints minionWaypoints;
    // private Vector2 currentTarget;
     public float force = 1.0f;
@@ -104,6 +103,23 @@ public class Minion : MonoBehaviour
             rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        //Recognises if rocket hits PlayerController class collider
+        if (otherCollider.GetComponent<PlayerController>() != null)
+        {
+            //Call Health class to deal damage to health bar
+            Health health = otherCollider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
     private void OnDestroy()
     {
         boss.currentMinion = 0; 

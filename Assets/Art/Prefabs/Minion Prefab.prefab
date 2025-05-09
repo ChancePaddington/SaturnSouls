@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 220548557100843450}
   - component: {fileID: -8866804149145409186}
   - component: {fileID: 21750094938047875}
+  - component: {fileID: -1975813944969656329}
   m_Layer: 0
   m_Name: Minion Prefab
   m_TagString: Untagged
@@ -218,3 +219,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
+--- !u!114 &-1975813944969656329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330106630404072611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5502878767e3b4798a77de385493c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  maxHealth: 2
+  currentHealth: 0
