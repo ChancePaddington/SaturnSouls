@@ -3,8 +3,11 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    //UI
     public Image healthBar;
-    public int maxHealth = 22;
+
+    //Variables
+    public int maxHealth = 100;
     public int currentHealth;
 
     private void Start()

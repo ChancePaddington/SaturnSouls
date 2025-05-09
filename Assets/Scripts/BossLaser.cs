@@ -75,6 +75,13 @@ public class BossLaser : MonoBehaviour
 
         if (otherCollider.GetComponent<Boss>() != null)
         {
+            //Call Health class to deal damage to health bar
+            Health health = otherCollider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+
             Destroy(gameObject);
         }
 

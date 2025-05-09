@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
             Shoot();
         }
 
+        //Create a bool to talk with Shield class re: shield regen
         if (Input.GetKeyDown(KeyCode.Space))
         {
             shieldSprite.SetActive(true);
