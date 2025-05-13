@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Minion : MonoBehaviour
 {
-    [Range(1, 10)]
-    [SerializeField] private float speed = 10f;
-    [Range(1, 10)]
-    [SerializeField] private float lifeTime = 6f;
+    [Range(1, 20)]
+    [SerializeField] private float speed = 20f;
+    [Range(1, 20)]
+    [SerializeField] private float lifeTime = 20f;
 
     private Rigidbody2D rb;
     private Boss boss;
@@ -33,7 +33,7 @@ public class Minion : MonoBehaviour
         //minionWaypoints = GetComponent<MinionWaypoints>();
 
         Vector3 direction = waypointA.transform.position - transform.position;
-        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
 
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot);
@@ -66,7 +66,7 @@ public class Minion : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
             rb.linearVelocity = transform.up * speed;
             Vector3 direction = waypointB.transform.position - transform.position;
-            rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+            rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
 
         }
 
@@ -81,7 +81,7 @@ public class Minion : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
             rb.linearVelocity = transform.up * speed;
             Vector3 direction = waypointA.transform.position - transform.position;
-            rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+            rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
         }
     }
 

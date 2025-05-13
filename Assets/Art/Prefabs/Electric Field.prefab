@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3039516335146875391}
   - component: {fileID: 5025732434780421700}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Electric Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}

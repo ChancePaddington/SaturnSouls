@@ -20,8 +20,12 @@ public class PlayerController : MonoBehaviour
     //Rocket variables
     [SerializeField] private GameObject rocketPrefab;
     [SerializeField] private Transform firingPoint;
-    [Range(0.1f, 1f)]
-    [SerializeField] private float fireRate = 0.5f;
+    [Range(0, 5)]
+    [SerializeField] public int maxAmmo = 5;
+    [Range(0, 10)]
+    [SerializeField] public float reloadTime = 10f;
+    private int currentAmmo;
+    private bool isReloading = false;
 
     //Shield variables
     [SerializeField] private Shield shield;
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentAmmo = maxAmmo;
     }
 
     private void Update()
@@ -54,16 +59,31 @@ public class PlayerController : MonoBehaviour
         transform.LookAt(mousePosition);
         transform.rotation = Quaternion.LookRotation(Vector3.forward, mousePosition - transform.position);
 
-
-        //Shoot upon left mouse click
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
-
         //Create a bool to talk with Shield class re: shield regen
         HandleShieldInput();
 
+        //Shoot upon left mouse click & is not reloading & ammo is greater than 0
+        if (Input.GetMouseButtonDown(0) && !isReloading && currentAmmo > 0)
+        {
+            //Deduct ammo
+            currentAmmo--;
+            Shoot();
+        }
+
+        if (Input.GetMouseButtonDown(0) && !isReloading && currentAmmo <= 0) 
+        {
+            StartCoroutine(Reload());
+        }
+
+    }
+
+    public IEnumerator Reload()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(reloadTime);
+        //Refill ammo
+        currentAmmo = maxAmmo;
+        isReloading = false;
     }
 
     public void HandleShieldInput()

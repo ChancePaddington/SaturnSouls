@@ -10,6 +10,7 @@ public class BossLaser : MonoBehaviour
 
     private Rigidbody2D rb;
     private GameObject player;
+    private GameObject boss;
     public float force = 1.0f;
     public int damage = 3;
 
@@ -18,6 +19,7 @@ public class BossLaser : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.up * speed;
         player = GameObject.FindGameObjectWithTag("Player");
+        boss = GameObject.FindGameObjectWithTag("Boss");
 
         if (player == null)
         {
@@ -40,10 +42,10 @@ public class BossLaser : MonoBehaviour
         Health health = otherCollider.GetComponent<Health>();
         if (health != null)
         {
-            health.TakeDamage(damage);
+          health.TakeDamage(damage);
         }
+          Destroy(gameObject);
 
-        Destroy(gameObject);
     }
 
 }
