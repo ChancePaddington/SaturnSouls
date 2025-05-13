@@ -8,6 +8,8 @@ TagManager:
   - Minion Waypoint
   - Minion Waypoint A
   - Minion Waypoint B
+  - Shield
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Rocket
   - Wall
   - Shield
-  - 
+  - Electric Field
   - 
   - 
   - 
