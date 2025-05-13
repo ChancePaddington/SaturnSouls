@@ -63,4 +63,9 @@ public class Boss : MonoBehaviour
             yield return new WaitForSeconds(timePeriod);
         }
     }
+
+    public void Deactivate()
+    {
+        Destroy(gameObject);
+    }
 }
