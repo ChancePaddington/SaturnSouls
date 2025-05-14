@@ -10,6 +10,7 @@ TagManager:
   - Minion Waypoint B
   - Shield
   - Boss
+  - Enemy
   layers:
   - Default
   - TransparentFX
