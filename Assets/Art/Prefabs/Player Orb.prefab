@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  lifeTime: 4
+  lifeTime: 3.57
   damage: 10
 --- !u!50 &5112738047530171970
 Rigidbody2D:
@@ -212,7 +212,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

@@ -15,7 +15,6 @@ public class Minion : MonoBehaviour
     public int damage = 10;
     //public MinionWaypoints minionWaypoints;
     
-    public float force = 1.0f;
     public float waitingAtWaypoint = 3f;
     public GameObject waypointA;
     public GameObject waypointB;

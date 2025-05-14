@@ -23,8 +23,6 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
         //Ensure health doesn't go below 0 or above 9
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        //Sets how filled the health bar is
-        //healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
         if (currentHealth <= 0)
         {
             onDeath?.Invoke();

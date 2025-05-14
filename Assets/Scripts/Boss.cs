@@ -8,11 +8,9 @@ public class Boss : MonoBehaviour
     //Rocket variables
     [SerializeField] private GameObject rocketPrefab;
     [SerializeField] private Transform firingPoint;
-    [Range(0.1f, 1f)]
-    [SerializeField] private float fireRate = 0.5f;
+    [Range(0.1f, 3f)]
+    [SerializeField] private float laserTimer = 2f;
     [SerializeField] private float speed = 10f;
-    [SerializeField] private float lifeTime = 4f;
-    private float laserTimer = 2f;
 
     //Minion variables
     [SerializeField] Transform minionSpawnPoint;
@@ -20,7 +18,7 @@ public class Boss : MonoBehaviour
     private float minionTimer = 5f;
     public int currentMinion;
 
-    //A variable to store our current minion
+    public Health health;
 
     private void Start()
     {
@@ -42,8 +40,10 @@ public class Boss : MonoBehaviour
             currentMinion = 1;
             Debug.Log("SpawnActivate");
         }
-    }
 
+        health.HealthRegen();
+
+    }
 
     public IEnumerator Spawn(float timePeriod)
     {
