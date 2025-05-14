@@ -44,7 +44,8 @@ public class BossLaser : MonoBehaviour
         {
           health.TakeDamage(damage);
         }
-          Destroy(gameObject);
+          
+        Destroy(gameObject);
 
     }
 

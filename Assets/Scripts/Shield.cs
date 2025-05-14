@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shield : MonoBehaviour
 {
+    public Image shieldRecharge;
+
     [SerializeField] private float cooldown = 1f;
 
     private bool isActive = false;
@@ -20,11 +23,16 @@ public class Shield : MonoBehaviour
         //Debug.Log($"delta time: {Time.deltaTime} - time since deactivation: {timeSinceDeactivation}");
 
         timeSinceDeactivation += Time.deltaTime;
+        //The radial fill amount = 1f - (timeSinceDeactivation / cooldown)
+        shieldRecharge.fillAmount = 1f - (timeSinceDeactivation / cooldown);
+
         // same as "timeSinceDeactivation = timeSinceDeactivation + Time.deltaTime;"
 
         if (timeSinceDeactivation >= cooldown)
         {
             canActivate = true;
+            shieldRecharge.fillAmount = 1f;
+
         }
     }
 

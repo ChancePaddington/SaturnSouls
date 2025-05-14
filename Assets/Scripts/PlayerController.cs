@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using System.Runtime.CompilerServices;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,9 +28,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float reloadTime = 10f;
     private int currentAmmo;
     private bool isReloading = false;
+    public Image ammoCapacity;
 
-    //Shield variables
+    //Shield class
     [SerializeField] private Shield shield;
+
+    //Health class
+    [SerializeField] private Health health;
 
     private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
@@ -51,9 +57,7 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(moveX * moveSpeed, moveY * moveSpeed);
         rb.AddForce(transform.up * thrust * rb.linearVelocity);
 
-        //Alternatively, specify the force mode, which is ForceMode2D.Force by default
-        //rb.AddForce(transform.up * thrust, ForceMode2D.Impulse);
-
+        //Rotates playercontroller towards mouse screen position
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         transform.LookAt(mousePosition);
@@ -74,6 +78,12 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
+
+        //Sets ammo GUI to current ammo
+        ammoCapacity.fillAmount = (float)currentAmmo / (float)maxAmmo;
+
+        //Sets health bar to current health
+        health.HealthRegen();
 
     }
 
