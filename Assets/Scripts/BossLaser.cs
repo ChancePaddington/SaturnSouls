@@ -38,7 +38,7 @@ public class BossLaser : MonoBehaviour
     {
         if (otherCollider.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             return;
         }
 

@@ -6957,7 +6957,7 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   rocketPrefab: {fileID: 6590581762839979626, guid: 18d2219436a8ad64c82b7517a37c24c0, type: 3}
   firingPoint: {fileID: 119476544}
-  maxAmmo: 3
+  maxAmmo: 2
   reloadTime: 3.21
   ammoCapacity: {fileID: 452711239}
   shield: {fileID: 682293704}

@@ -5,6 +5,7 @@ public class Shield : MonoBehaviour
 {
     public Image shieldRecharge;
 
+    [Range(0f, 2f)]
     [SerializeField] private float cooldown = 1f;
 
     private bool isActive = false;

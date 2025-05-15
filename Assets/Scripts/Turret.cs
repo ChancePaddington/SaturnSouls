@@ -1,12 +1,18 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Turret : MonoBehaviour
 {
-    private float laserTimer = 2f;
+    [Range (0f, 3f)]
+    [SerializeField] private float laserTimer = 2f;
     //private GameObject player;
     [SerializeField] private GameObject rocketPrefab;
     [SerializeField] private Transform firingPoint;
+
+    //Tutorial UI
+    public TextMeshProUGUI tutorialText;
 
     private void Start()
     {
@@ -28,6 +34,7 @@ public class Turret : MonoBehaviour
     }
     public void Deactivate()
     {
+        //Destroy(tutorialText);
         Destroy(gameObject);
     }
 

@@ -11,6 +11,7 @@ TagManager:
   - Shield
   - Boss
   - Enemy
+  - Tutorial
   layers:
   - Default
   - TransparentFX

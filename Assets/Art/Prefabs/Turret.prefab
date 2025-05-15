@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3392600621137848114}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.006255649, w: 0.99998045}
+  m_LocalRotation: {x: 0, y: 0, z: 0.0062569417, w: 0.99998045}
   m_LocalPosition: {x: -6.6, y: 0.06, z: 0}
   m_LocalScale: {x: 4.3524656, y: 4.3524656, z: 4.3524656}
   m_ConstrainProportionsScale: 0
@@ -140,7 +140,7 @@ PolygonCollider2D:
     - - {x: 0.10509306, y: 0.3948185}
       - {x: 0.06942178, y: 0.42926607}
       - {x: -0.099878095, y: 0.41883337}
-      - {x: -0.12185197, y: 0.202354}
+      - {x: -0.10295607, y: 0.23538618}
       - {x: 0.0022226488, y: 0.21685144}
       - {x: 0.07008189, y: 0.19813955}
       - {x: 0.11705964, y: 0.24016239}
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rocketPrefab: {fileID: 7338467992025419840, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
   firingPoint: {fileID: 4898521668089921207}
+  tutorialText: {fileID: 0}
 --- !u!114 &3298533275142168495
 MonoBehaviour:
   m_ObjectHideFlags: 0
