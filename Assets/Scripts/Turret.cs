@@ -11,6 +11,12 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject rocketPrefab;
     [SerializeField] private Transform firingPoint;
 
+    //Minion variables
+    [SerializeField] Transform minionSpawnPoint;
+    [SerializeField] Transform minionPrefab;
+    private float minionTimer = 5f;
+    public int currentMinion;
+
     //Tutorial UI
     public TextMeshProUGUI tutorialText;
 
@@ -19,7 +25,20 @@ public class Turret : MonoBehaviour
         //Contols the amount of time between laser shots
         StartCoroutine(Shoot(laserTimer));
 
-        //player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void Update()
+    {
+        
+        //In this case, spawn a new minion and assign it to the current minion variable
+        if (currentMinion == 0)
+        {
+            //Controls the amount of time between minion spawns
+            StartCoroutine(Spawn(minionTimer));
+
+            currentMinion = 1;
+            Debug.Log("SpawnActivate");
+        }
     }
 
     private IEnumerator Shoot(float timePeriod)
@@ -31,7 +50,16 @@ public class Turret : MonoBehaviour
             //Suspends the coroutine for set amount of seconds
             yield return new WaitForSeconds(timePeriod);
         }
+
     }
+
+    public IEnumerator Spawn(float timePeriod)
+    {
+        //Spawns minion
+        yield return new WaitForSeconds(timePeriod);
+        Instantiate(minionPrefab, minionSpawnPoint.position, minionSpawnPoint.rotation);
+    }
+
     public void Deactivate()
     {
         //Destroy(tutorialText);

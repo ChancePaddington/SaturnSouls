@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class Minion : MonoBehaviour
 {
+    private Rigidbody2D rb;
+
+    //Behaviour variables
     [Range(1, 20)]
     [SerializeField] private float speed = 20f;
     [Range(1, 20)]
     [SerializeField] private float lifeTime = 20f;
-
-    private Rigidbody2D rb;
-    private Boss boss;
     public int damage = 10;
-    //public MinionWaypoints minionWaypoints;
+
     
+    //Enemy class needed to talk to
+    private Boss boss;
+    public Turret turret;
+
+    //Waypoint variables
     public float waitingAtWaypoint = 3f;
     public GameObject waypointA;
     public GameObject waypointB;
@@ -28,8 +33,8 @@ public class Minion : MonoBehaviour
         waypointA = GameObject.FindGameObjectWithTag("Minion Waypoint A");
         waypointB = GameObject.FindGameObjectWithTag("Minion Waypoint B");
 
-        boss = FindAnyObjectByType<Boss>();
-        //minionWaypoints = GetComponent<MinionWaypoints>();
+        //boss = FindAnyObjectByType<Boss>();
+        turret = FindAnyObjectByType<Turret>();
 
         Vector3 direction = waypointA.transform.position - transform.position;
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
@@ -44,6 +49,7 @@ public class Minion : MonoBehaviour
     public void Update()
     {
         StartCoroutine(SwitchTargetPosition(waitingAtWaypoint));
+
     }
 
     //for (int i = 0; i < waypoints.Count; i++)
@@ -54,6 +60,8 @@ public class Minion : MonoBehaviour
         yield return new WaitForSeconds(timePeriod);
 
     }
+
+
     public void MoveToTarget()
     {
         float distanceToTargetA = Vector3.Distance(transform.position, waypointA.transform.position);
@@ -107,7 +115,9 @@ public class Minion : MonoBehaviour
 
     private void OnDestroy()
     {
-        boss.currentMinion = 0; 
+        //boss.currentMinion = 0;
+        turret.currentMinion = 0;
+        Debug.Log("Current Minion now 0");
     }
 
 }

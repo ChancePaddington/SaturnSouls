@@ -23,14 +23,16 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
         //Ensure health doesn't go below 0 or above 9
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealth();
         if (currentHealth <= 0)
         {
             onDeath?.Invoke();
         }
     }
 
-    public void HealthRegen()
+    public void UpdateHealth()
     {
+        if (healthBar == null) { return; }
         healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
     }
 

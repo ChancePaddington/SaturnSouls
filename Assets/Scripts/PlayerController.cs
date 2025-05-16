@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         ammoCapacity.fillAmount = (float)currentAmmo / (float)maxAmmo;
 
         //Sets health bar to current health
-        health.HealthRegen();
+        //health.UpdateHealth();
 
     }
 

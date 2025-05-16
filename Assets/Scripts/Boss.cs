@@ -41,7 +41,7 @@ public class Boss : MonoBehaviour
             Debug.Log("SpawnActivate");
         }
 
-        health.HealthRegen();
+        //health.UpdateHealth();
 
     }
 
