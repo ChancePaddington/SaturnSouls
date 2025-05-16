@@ -40,7 +40,6 @@ public class Turret : MonoBehaviour
             Debug.Log("SpawnActivate");
         }
     }
-
     private IEnumerator Shoot(float timePeriod)
     {
         while (true)
@@ -52,7 +51,6 @@ public class Turret : MonoBehaviour
         }
 
     }
-
     public IEnumerator Spawn(float timePeriod)
     {
         //Spawns minion
@@ -65,5 +63,4 @@ public class Turret : MonoBehaviour
         //Destroy(tutorialText);
         Destroy(gameObject);
     }
-
 }

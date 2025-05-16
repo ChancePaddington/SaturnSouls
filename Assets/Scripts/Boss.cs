@@ -4,6 +4,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     //private GameObject player;
+    public Health health;
 
     //Rocket variables
     [SerializeField] private GameObject rocketPrefab;
@@ -12,13 +13,13 @@ public class Boss : MonoBehaviour
     [SerializeField] private float laserTimer = 2f;
     [SerializeField] private float speed = 10f;
 
-    //Minion variables
-    [SerializeField] Transform minionSpawnPoint;
-    [SerializeField] Transform minionPrefab;
-    private float minionTimer = 5f;
-    public int currentMinion;
+    //Meteor variables
+    [SerializeField] Transform meteorASpawnPoint;
+    [SerializeField] Transform meteorAPrefab;
+    [Range(0.1f, 60f)]
+    [SerializeField] private float meteorTimer = 10f;
+    public int currentMeteor;
 
-    public Health health;
 
     private void Start()
     {
@@ -28,31 +29,21 @@ public class Boss : MonoBehaviour
         //player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    //Update function which checks if the current minion variable has no value i.e. there is no minion
+    //Update function which checks if the current meteor variable has no value i.e. there is no minion
     private void Update()
     {
-        //In this case, spawn a new minion and assign it to the current minion variable
-        if (currentMinion == 0)
+        //In this case, spawn a new meteor and assign it to the current minion variable
+        if (currentMeteor == 0)
         {
-            //Controls the amount of time between minion spawns
-            StartCoroutine(Spawn(minionTimer));
+            //Controls the amount of time between meteor spawns
+            StartCoroutine(SpawnMeteor(meteorTimer));
 
-            currentMinion = 1;
-            Debug.Log("SpawnActivate");
+            currentMeteor = 1;
+            
         }
 
         //health.UpdateHealth();
-
     }
-
-    public IEnumerator Spawn(float timePeriod)
-    {
-        //Spawns minion
-        yield return new WaitForSeconds(timePeriod);
-        Instantiate(minionPrefab, minionSpawnPoint.position, minionSpawnPoint.rotation);
-    }
-
-
     private IEnumerator Shoot(float timePeriod)
     {
         while (true)
@@ -61,6 +52,16 @@ public class Boss : MonoBehaviour
             Instantiate(rocketPrefab, firingPoint.position, firingPoint.rotation);
             //Suspends the coroutine for set amount of seconds
             yield return new WaitForSeconds(timePeriod);
+        }
+    }
+
+
+    public IEnumerator SpawnMeteor(float timePeriod)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(timePeriod);
+            Instantiate(meteorAPrefab, meteorASpawnPoint.position, meteorASpawnPoint.rotation);
         }
     }
 

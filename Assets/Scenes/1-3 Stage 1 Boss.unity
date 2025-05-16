@@ -1111,7 +1111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: 186.1}
+  m_AnchoredPosition: {x: 5, y: 179.7}
   m_SizeDelta: {x: -707.9142, y: -575.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &195868318
@@ -1425,37 +1425,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452711237}
   m_CullTransparentMesh: 1
---- !u!1 &489030971
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 489030972}
-  m_Layer: 0
-  m_Name: Weak Point (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &489030972
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 489030971}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.064, y: 0.955, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 774340869}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &513589067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,9 +2211,7 @@ Transform:
   m_Children:
   - {fileID: 23645261}
   - {fileID: 912698106}
-  - {fileID: 1649110000}
-  - {fileID: 1312760052}
-  - {fileID: 489030972}
+  - {fileID: 1650631862}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 179.981}
 --- !u!114 &774340870
@@ -2259,6 +2226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dfb6eb36114d844b913c4565a24345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 774340872}
   rocketPrefab: {fileID: 7338467992025419840, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
   firingPoint: {fileID: 23645261}
   laserTimer: 1.23
@@ -2266,7 +2234,9 @@ MonoBehaviour:
   minionSpawnPoint: {fileID: 0}
   minionPrefab: {fileID: 0}
   currentMinion: 0
-  health: {fileID: 774340872}
+  meteorSpawnPoint: {fileID: 1650631862}
+  meteorPrefab: {fileID: 8314608789254290914, guid: 9672fcbfe1cf5634b89ef77e64fb9142, type: 3}
+  meteorTimer: 10
 --- !u!61 &774340871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3031,6 +3001,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1916306389}
+    - target: {fileID: 4920690324992718034, guid: cdf3702c4f441914ab53de17ddf7e31d, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6116550432308940482, guid: cdf3702c4f441914ab53de17ddf7e31d, type: 3}
       propertyPath: ammoCapacity
       value: 
@@ -6815,37 +6789,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265770549}
   m_CullTransparentMesh: 1
---- !u!1 &1312760051
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1312760052}
-  m_Layer: 0
-  m_Name: Weak Point (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1312760052
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312760051}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.035, y: 0.23, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 774340869}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451180647
 GameObject:
   m_ObjectHideFlags: 0
@@ -7047,7 +6990,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501043885}
   m_CullTransparentMesh: 0
---- !u!1 &1649109999
+--- !u!1 &1650631861
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7055,24 +6998,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1649110000}
+  - component: {fileID: 1650631862}
   m_Layer: 0
-  m_Name: Weak Point (1)
+  m_Name: Meteor Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1649110000
+--- !u!4 &1650631862
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649109999}
+  m_GameObject: {fileID: 1650631861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.381, y: 0.294, z: 0}
+  m_LocalPosition: {x: -0.012, y: -1.586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

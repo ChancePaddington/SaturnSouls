@@ -63,6 +63,6 @@ public class Shield : MonoBehaviour
     {
         isActive = enabled;
         GetComponent<SpriteRenderer>().enabled = enabled;
-        GetComponent<BoxCollider2D>().enabled = enabled;
+        GetComponent<CircleCollider2D>().enabled = enabled;
     }
 }

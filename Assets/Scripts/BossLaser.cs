@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BossLaser : MonoBehaviour
@@ -7,6 +8,8 @@ public class BossLaser : MonoBehaviour
 
     [Range(1, 10)]
     [SerializeField] private float lifeTime = 6f;
+
+    //[SerializeField] List<string> selectedTags;
 
     private Rigidbody2D rb;
     private GameObject player;
@@ -47,7 +50,7 @@ public class BossLaser : MonoBehaviour
         Debug.Log("Calling Health script");
         if (health != null)
         {
-          health.TakeDamage(damage);
+            health.TakeDamage(damage);
         }
           
         Destroy(gameObject);

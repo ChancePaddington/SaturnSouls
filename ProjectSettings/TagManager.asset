@@ -12,6 +12,7 @@ TagManager:
   - Boss
   - Enemy
   - Tutorial
+  - Meteor Waypoint A
   layers:
   - Default
   - TransparentFX

@@ -1,11 +1,17 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Minion : MonoBehaviour
+public class Meteor : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public Boss boss;
+    private GameObject waypointA;
+    private GameObject waypointB;
+    private GameObject waypointC;
+    private GameObject waypointD;
+    private GameObject player;
+    private float waitingAtWaypoint = 5f;
+    public int currentMeteor;
 
     //Behaviour variables
     [Range(1, 20)]
@@ -14,26 +20,24 @@ public class Minion : MonoBehaviour
     [SerializeField] private float lifeTime = 20f;
     public int damage = 10;
 
-    
-    //Enemy class needed to talk to
-    public Turret turret;
-
-    //Waypoint variables
-    public float waitingAtWaypoint = 3f;
-    public GameObject waypointA;
-    public GameObject waypointB;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.up * speed;
+        player = GameObject.FindGameObjectWithTag("Player");
         //Finds the game object with the tag to move to
         //(For later) Add to boss family and call from the boss class 
-        waypointA = GameObject.FindGameObjectWithTag("Minion Waypoint A");
-        waypointB = GameObject.FindGameObjectWithTag("Minion Waypoint B");
+        waypointA = GameObject.FindGameObjectWithTag("Meteor Waypoint A");
+        waypointB = GameObject.FindGameObjectWithTag("Meteor Waypoint B");
+        waypointC = GameObject.FindGameObjectWithTag("Meteor Waypoint C");
+        waypointD = GameObject.FindGameObjectWithTag("Meteor Waypoint D");
 
-        //boss = FindAnyObjectByType<Boss>();
-        turret = FindAnyObjectByType<Turret>();
+
+        if (player == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         Vector3 direction = waypointA.transform.position - transform.position;
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
@@ -42,24 +46,21 @@ public class Minion : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rot);
 
         Destroy(gameObject, lifeTime);
-
     }
 
     public void Update()
     {
+        //Controls the time between position changes
         StartCoroutine(SwitchTargetPosition(waitingAtWaypoint));
-
     }
 
-    //for (int i = 0; i < waypoints.Count; i++)
     public IEnumerator SwitchTargetPosition(float timePeriod)
     {
-        // iterate across the list
+    
         MoveToTarget();
         yield return new WaitForSeconds(timePeriod);
 
     }
-
 
     public void MoveToTarget()
     {
@@ -86,6 +87,34 @@ public class Minion : MonoBehaviour
             Debug.Log("Has waited");
             rb = GetComponent<Rigidbody2D>();
             rb.linearVelocity = transform.up * speed;
+            Vector3 direction = waypointC.transform.position - transform.position;
+            rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
+        }
+
+        float distanceToTargetC = Vector3.Distance(transform.position, waypointC.transform.position);
+        bool isCloseToTargetC = distanceToTargetC < 0.2f;
+
+        if (isCloseToTargetC)
+        {
+            Debug.Log("Needs to wait");
+            //yield return new WaitForSeconds(timePeriod);
+            Debug.Log("Has waited");
+            rb = GetComponent<Rigidbody2D>();
+            rb.linearVelocity = transform.up * speed;
+            Vector3 direction = waypointD.transform.position - transform.position;
+            rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
+        }
+
+        float distanceToTargetD = Vector3.Distance(transform.position, waypointD.transform.position);
+        bool isCloseToTargetD = distanceToTargetD < 0.2f;
+
+        if (isCloseToTargetD)
+        {
+            Debug.Log("Needs to wait");
+            //yield return new WaitForSeconds(timePeriod);
+            Debug.Log("Has waited");
+            rb = GetComponent<Rigidbody2D>();
+            rb.linearVelocity = transform.up * speed;
             Vector3 direction = waypointA.transform.position - transform.position;
             rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
         }
@@ -103,19 +132,11 @@ public class Minion : MonoBehaviour
                 health.TakeDamage(damage);
             }
 
-            Destroy(gameObject);
         }
     }
 
-    public void Deactivate()
-    {
-        Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        turret.currentMinion = 0;
-        Debug.Log("Current Minion now 0");
-    }
-
+    //private void OnDestroy()
+    //{
+    //    boss.currentMeteor = 0;
+    //}
 }
