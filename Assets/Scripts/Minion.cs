@@ -17,6 +17,7 @@ public class Minion : MonoBehaviour
     
     //Enemy class needed to talk to
     public Turret turret;
+    public MinionSpawn spawn;
 
     //Waypoint variables
     public float waitingAtWaypoint = 3f;
@@ -33,7 +34,8 @@ public class Minion : MonoBehaviour
         waypointB = GameObject.FindGameObjectWithTag("Minion Waypoint B");
 
         //boss = FindAnyObjectByType<Boss>();
-        turret = FindAnyObjectByType<Turret>();
+        //turret = FindAnyObjectByType<Turret>();
+        spawn = FindAnyObjectByType<MinionSpawn>();
 
         Vector3 direction = waypointA.transform.position - transform.position;
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
@@ -114,8 +116,8 @@ public class Minion : MonoBehaviour
 
     private void OnDestroy()
     {
-        turret.currentMinion = 0;
-        Debug.Log("Current Minion now 0");
+        spawn.currentMinion = 0;
+        //turret.currentMinion = 0;
     }
 
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    //private GameObject player;
     public Health health;
+    private UIController uiCon;
 
     //Rocket variables
     [SerializeField] private GameObject rocketPrefab;
@@ -23,10 +23,9 @@ public class Boss : MonoBehaviour
 
     private void Start()
     {
+        uiCon = FindAnyObjectByType<UIController>();
         //Contols the amount of time between laser shots
         StartCoroutine(Shoot(laserTimer));
-
-        //player = GameObject.FindGameObjectWithTag("Player");
     }
 
     //Update function which checks if the current meteor variable has no value i.e. there is no minion
@@ -48,10 +47,10 @@ public class Boss : MonoBehaviour
     {
         while (true)
         {
-            //Spawns rocket
-            Instantiate(rocketPrefab, firingPoint.position, firingPoint.rotation);
             //Suspends the coroutine for set amount of seconds
             yield return new WaitForSeconds(timePeriod);
+            //Spawns rocket
+            Instantiate(rocketPrefab, firingPoint.position, firingPoint.rotation);
         }
     }
 
@@ -67,6 +66,7 @@ public class Boss : MonoBehaviour
 
     public void Deactivate()
     {
+        uiCon.enemies.Remove(gameObject);
         Destroy(gameObject);
     }
 }

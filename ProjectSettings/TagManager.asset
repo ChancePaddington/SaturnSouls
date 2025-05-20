@@ -13,6 +13,9 @@ TagManager:
   - Enemy
   - Tutorial
   - Meteor Waypoint A
+  - Meteor Waypoint B
+  - Meteor Waypoint C
+  - Meteor Waypoint D
   layers:
   - Default
   - TransparentFX

@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour
     //Rocket variables
     [SerializeField] private GameObject rocketPrefab;
     [SerializeField] private Transform firingPoint;
-    [Range(0, 5)]
-    [SerializeField] public int maxAmmo = 5;
+    //[Range(0, 5)]
+    [SerializeField] public float maxAmmo = 5;
     [Range(0, 10)]
     [SerializeField] public float reloadTime = 10f;
-    private int currentAmmo;
+    private float currentAmmo;
     private bool isReloading = false;
     public Image ammoCapacity;
 
