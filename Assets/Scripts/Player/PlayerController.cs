@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private bool isReloading = false;
     public Image ammoCapacity;
 
+    //reload timer (float)
+
     //Shield class
     [SerializeField] private Shield shield;
 
@@ -38,8 +40,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-        Debug.Log("I have been touched");  
-        Debug.Log(collision.gameObject.name);
+        //Debug.Log("I have been touched");  
+        //Debug.Log(collision.gameObject.name);
     }
     private void Start()
     {
@@ -78,6 +80,16 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
+
+        //if the current ammo is zero
+        //count up the reload timer in seconds
+        //The ammo capacity fill amount = reload timer / reload time
+
+        //if the current ammo is greater than zero
+        //reset the reload timer to zero;
+        //the ammo capacity fill amount is equal to one
+
+
 
         //Sets ammo GUI to current ammo
         ammoCapacity.fillAmount = (float)currentAmmo / (float)maxAmmo;

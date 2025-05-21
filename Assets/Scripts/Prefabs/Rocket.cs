@@ -3,11 +3,16 @@ using System.Collections;
 
 public class Rocket : MonoBehaviour
 {
-    [Range(1, 10)]
+    //Behaviour
+    [Range(1, 20)]
     [SerializeField] private float speed = 10f;
-
     [Range(1, 10)]
     [SerializeField] private float lifeTime = 6f;
+
+    //Audio
+    [SerializeField] AudioClip fireSound;
+    [Range(1, 10)]
+    [SerializeField] float volume = 1f;
 
     private Rigidbody2D rb;
     public int damage = 2;
@@ -16,6 +21,10 @@ public class Rocket : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.up * speed;
+
+        //Play sound FX
+        SoundManager.instance.PlaySoundFXClip(fireSound, transform, volume);
+     
         //Destroys rocket when life time expires
         Destroy(gameObject, lifeTime);
     }

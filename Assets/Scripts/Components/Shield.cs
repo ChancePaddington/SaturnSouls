@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Shield : MonoBehaviour
 {
     public Image shieldRecharge;
+    public Health health;   
 
     [Range(0f, 2f)]
     [SerializeField] private float cooldown = 1f;
@@ -35,6 +36,8 @@ public class Shield : MonoBehaviour
             shieldRecharge.fillAmount = 1f;
 
         }
+
+        //Health needs to recharge on activation
     }
 
     public void TryActivate()
@@ -64,5 +67,6 @@ public class Shield : MonoBehaviour
         isActive = enabled;
         GetComponent<SpriteRenderer>().enabled = enabled;
         GetComponent<CircleCollider2D>().enabled = enabled;
+        health.currentHealth = health.maxHealth;
     }
 }

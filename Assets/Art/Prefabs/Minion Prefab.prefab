@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.05, y: 2.3, z: 0}
-  m_LocalScale: {x: 1.83945, y: 1.83945, z: 1.83945}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3526261729705526640, guid: e1751109c3309d84c87e534bd9619aca, type: 3}
+  m_Sprite: {fileID: 3210242293292131902, guid: 7d6665d70395db04c8c1bcde429bddb5, type: 3}
   m_Color: {r: 0.96981126, g: 0.63100046, b: 0.43733, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,8 +156,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: -0.75000006}
-    oldSize: {x: 0.28, y: 0.28}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8625, y: 0.9035}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -180,6 +180,8 @@ MonoBehaviour:
   speed: 5.07
   lifeTime: 11.78
   damage: 4
+  turret: {fileID: 0}
+  spawn: {fileID: 0}
   waitingAtWaypoint: 3
   waypointA: {fileID: 0}
   waypointB: {fileID: 0}
