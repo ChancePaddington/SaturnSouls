@@ -11,7 +11,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private Transform firingPoint;
     [Range(0.1f, 3f)]
     [SerializeField] private float laserTimer = 2f;
-    [SerializeField] private float speed = 10f;
+    //[SerializeField] private float speed = 10f;
 
     private void Start()
     {

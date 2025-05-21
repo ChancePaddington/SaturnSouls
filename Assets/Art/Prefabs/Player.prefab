@@ -110,7 +110,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   rocketPrefab: {fileID: 6590581762839979626, guid: 18d2219436a8ad64c82b7517a37c24c0, type: 3}
   firingPoint: {fileID: 5946790592488758233}
-  maxAmmo: 2
+  maxAmmo: 1
   reloadTime: 2.45
   ammoCapacity: {fileID: 0}
   shield: {fileID: 1204977998543204479}
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldRecharge: {fileID: 0}
   health: {fileID: 2411740288160388967}
-  cooldown: 2
+  cooldown: 2.23
 --- !u!114 &2411740288160388967
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private float currentAmmo;
     private bool isReloading = false;
     public Image ammoCapacity;
+    private float ammoIsEmpty = 0f;
 
     //reload timer (float)
 
@@ -81,6 +82,16 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Reload());
         }
 
+        ammoIsEmpty += Time.deltaTime;
+        //The GUI radial fill amount
+        ammoCapacity.fillAmount = 1f - (ammoIsEmpty / reloadTime);
+        if (currentAmmo > 0)
+        {
+           ammoIsEmpty = 0f;
+        }
+        //Sets ammo GUI to current ammo
+        //ammoCapacity.fillAmount = (float)currentAmmo / (float)maxAmmo;
+
         //if the current ammo is zero
         //count up the reload timer in seconds
         //The ammo capacity fill amount = reload timer / reload time
@@ -88,14 +99,6 @@ public class PlayerController : MonoBehaviour
         //if the current ammo is greater than zero
         //reset the reload timer to zero;
         //the ammo capacity fill amount is equal to one
-
-
-
-        //Sets ammo GUI to current ammo
-        ammoCapacity.fillAmount = (float)currentAmmo / (float)maxAmmo;
-
-        //Sets health bar to current health
-        //health.UpdateHealth();
 
     }
 

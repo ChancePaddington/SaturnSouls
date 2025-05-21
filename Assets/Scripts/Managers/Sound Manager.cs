@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
+    public SoundLoopManager loopManager;
     [SerializeField] public AudioSource soundFXObject;
 
     private void Awake()
@@ -30,6 +32,11 @@ public class SoundManager : MonoBehaviour
 
         //Destroy the clip after it is done playing
         Destroy(audioSource.gameObject, clipLength);
+    }
+
+    private void Update()
+    {
+        //loopManager.PlayLoopFXSound(audioSource);
     }
 
     //Another function which plays a looping clip

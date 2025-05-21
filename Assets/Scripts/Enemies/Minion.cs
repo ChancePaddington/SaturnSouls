@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Minion : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class Minion : MonoBehaviour
     [SerializeField] private float lifeTime = 20f;
     public int damage = 10;
 
-    
     //Enemy class needed to talk to
     public Turret turret;
     public MinionSpawn spawn;
@@ -24,17 +24,21 @@ public class Minion : MonoBehaviour
     public GameObject waypointA;
     public GameObject waypointB;
 
+    //Audio
+    [SerializeField] AudioClip alarmSound;
+    public SoundLoopManager soundLoopManager;
+    [Range(1, 10)]
+    [SerializeField] float volume = 1f;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.up * speed;
-        //Finds the game object with the tag to move to
-        //(For later) Add to boss family and call from the boss class 
+
+        //Finds the game object with the tag to move to 
         waypointA = GameObject.FindGameObjectWithTag("Minion Waypoint A");
         waypointB = GameObject.FindGameObjectWithTag("Minion Waypoint B");
 
-        //boss = FindAnyObjectByType<Boss>();
-        //turret = FindAnyObjectByType<Turret>();
         spawn = FindAnyObjectByType<MinionSpawn>();
 
         Vector3 direction = waypointA.transform.position - transform.position;
@@ -42,6 +46,9 @@ public class Minion : MonoBehaviour
 
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot);
+
+        //Play audio
+        //SoundManager.instance.PlayLoopFXClip(alarmSound, transform, volume);
 
         Destroy(gameObject, lifeTime);
 
@@ -111,13 +118,13 @@ public class Minion : MonoBehaviour
 
     public void Deactivate()
     {
+        //Destroy(soundLoopManager.audioSource);
         Destroy(gameObject);
     }
 
     private void OnDestroy()
     {
         spawn.currentMinion = 0;
-        //turret.currentMinion = 0;
     }
 
 }

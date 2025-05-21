@@ -6,7 +6,7 @@ public class Shield : MonoBehaviour
     public Image shieldRecharge;
     public Health health;   
 
-    [Range(0f, 2f)]
+    [Range(0f, 5f)]
     [SerializeField] private float cooldown = 1f;
 
     private bool isActive = false;
@@ -22,8 +22,6 @@ public class Shield : MonoBehaviour
     {
         if (canActivate) { return; }
 
-        //Debug.Log($"delta time: {Time.deltaTime} - time since deactivation: {timeSinceDeactivation}");
-
         timeSinceDeactivation += Time.deltaTime;
         //The radial fill amount = 1f - (timeSinceDeactivation / cooldown)
         shieldRecharge.fillAmount = 1f - (timeSinceDeactivation / cooldown);
@@ -36,8 +34,6 @@ public class Shield : MonoBehaviour
             shieldRecharge.fillAmount = 1f;
 
         }
-
-        //Health needs to recharge on activation
     }
 
     public void TryActivate()
@@ -68,5 +64,6 @@ public class Shield : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = enabled;
         GetComponent<CircleCollider2D>().enabled = enabled;
         health.currentHealth = health.maxHealth;
+        health.UpdateHealth();
     }
 }
