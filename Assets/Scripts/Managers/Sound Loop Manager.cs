@@ -3,20 +3,13 @@ using UnityEngine.Rendering;
 
 public class SoundLoopManager : MonoBehaviour
 {
-    [SerializeField] AudioSource audioSource;
-    public SoundManager soundManager;
+    [SerializeField] public AudioClip explodeSound;
+    [Range(1, 10)]
+    [SerializeField] float volume = 1f;
 
-    public void PlayLoopFXSound(AudioClip audioClip, Transform spawnTransform, float volume)
+    private void Start()
     {
-       AudioSource audioSource = Instantiate(soundManager.soundFXObject, spawnTransform.position, Quaternion.identity);
-
-        audioSource.clip = audioClip;
-
-        audioSource.volume = volume;
-
-        float clipLength = audioSource.clip.length;
-        audioSource.Play();
-
-        //Destroy(audioSource.gameObject, clipLength);
+        SoundManager.instance.PlayLoopFXSound(explodeSound, transform, volume);
     }
+
 }

@@ -4,15 +4,11 @@ using System.Collections.Generic;
 public class UIController : MonoBehaviour
 {
     public List<GameObject> enemies;
-
     private GameObject[] enemy;
-    private GameObject player;
     public int nextScene;
-    //public int gameOver;
 
-    public void Start()
+    private void Start()
     {
-        //player = GameObject.FindGameObjectWithTag("Player Controller");
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
         enemies.AddRange(enemy);
     }
@@ -21,16 +17,6 @@ public class UIController : MonoBehaviour
     {
         NextLevel();
     }
-
-    //public void PlayBossOne()
-    // {
-    //     SceneController.LoadScene(1);
-    // }
-
-    // public void PlayBossTwo()
-    // {
-    //     SceneController.LoadScene(2);
-    // }
 
     public void Restart()
     {
@@ -43,10 +29,6 @@ public class UIController : MonoBehaviour
         {
             SceneController.LoadScene(nextScene);
         }
-        //else if (player == null)
-        //{
-        //    SceneController.LoadScene(gameOver);
-        //}
     }
 
     public void SceneLoad(int sceneIndex)

@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     public SoundLoopManager loopManager;
     [SerializeField] public AudioSource soundFXObject;
+    [SerializeField] public AudioSource soundLoopFXObject;
 
     private void Awake()
     {
@@ -34,15 +35,23 @@ public class SoundManager : MonoBehaviour
         Destroy(audioSource.gameObject, clipLength);
     }
 
-    private void Update()
+    //Another function which plays a looping clip
+    public void PlayLoopFXSound(AudioClip audioClip, Transform spawnTransform, float volume)
     {
-        //loopManager.PlayLoopFXSound(audioSource);
+        AudioSource audioSource = Instantiate(soundLoopFXObject, spawnTransform.position, Quaternion.identity);
+
+        audioSource.clip = audioClip;
+
+        //Assign volume
+        audioSource.volume = volume;
+
+        //Play sound
+        float clipLength = audioSource.clip.length;
+        audioSource.Play();
     }
 
-    //Another function which plays a looping clip
-
     //In a new script (let's call this Loop Sound Activator)
-    //This new script would run the above looping function
+    //This new script would run SoundManager.PlayLoopFXSound()
     //This script will need to store the instantiated audiosource as a variable
     //In the minion script, when the minion is destroyed, it should also talk to the Loop Sound Activator
     //And tell it to destroy the audiosource (which is has stored as a variable)

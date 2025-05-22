@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8866804149145409186}
   - component: {fileID: 21750094938047875}
   - component: {fileID: -1975813944969656329}
+  - component: {fileID: 4346257757764235228}
   m_Layer: 0
   m_Name: Minion Prefab
   m_TagString: Enemy
@@ -180,11 +181,14 @@ MonoBehaviour:
   speed: 5.07
   lifeTime: 11.78
   damage: 4
-  turret: {fileID: 0}
+  soundLoop: {fileID: 0}
   spawn: {fileID: 0}
   waitingAtWaypoint: 3
   waypointA: {fileID: 0}
   waypointB: {fileID: 0}
+  alarmSound: {fileID: 0}
+  soundLoopManager: {fileID: 0}
+  volume: 1
 --- !u!58 &21750094938047875
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -235,7 +239,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   maxHealth: 4
-  currentHealth: 0
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -251,3 +254,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4346257757764235228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330106630404072611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee31101ad362f145bdfcd76dd3a2c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 8407226249759598315, guid: ac2d5771d601c5a42bbbcb86758984f3, type: 3}
+  explodeSound: {fileID: 8300000, guid: 73cd385f015b8bc429d71cad3655f7dc, type: 3}
+  volume: 1

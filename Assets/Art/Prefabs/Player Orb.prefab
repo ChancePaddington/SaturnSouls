@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  lifeTime: 2.64
+  lifeTime: 2
   fireSound: {fileID: 8300000, guid: 73cd385f015b8bc429d71cad3655f7dc, type: 3}
   volume: 1
   damage: 10

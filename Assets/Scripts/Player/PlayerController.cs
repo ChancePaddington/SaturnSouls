@@ -39,11 +39,6 @@ public class PlayerController : MonoBehaviour
     //Health class
     [SerializeField] private Health health;
 
-    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
-    {
-        //Debug.Log("I have been touched");  
-        //Debug.Log(collision.gameObject.name);
-    }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
