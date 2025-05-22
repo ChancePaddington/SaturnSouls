@@ -30,10 +30,15 @@ public class Shield : MonoBehaviour
 
         if (timeSinceDeactivation >= cooldown)
         {
-            canActivate = true;
-            shieldRecharge.fillAmount = 1f;
-
+            RegenerateShield();
         }
+    }
+
+    private void RegenerateShield()
+    {
+        canActivate = true;
+        shieldRecharge.fillAmount = 1f;
+        health.ResetToMax();
     }
 
     public void TryActivate()
@@ -63,7 +68,6 @@ public class Shield : MonoBehaviour
         isActive = enabled;
         GetComponent<SpriteRenderer>().enabled = enabled;
         GetComponent<CircleCollider2D>().enabled = enabled;
-        health.currentHealth = health.maxHealth;
-        health.UpdateHealth();
+
     }
 }

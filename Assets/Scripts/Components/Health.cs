@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
 
     //Variables
     public int maxHealth = 30;
-    public int currentHealth;
+    private int currentHealth;
 
     public UnityEvent onDeath;
 
@@ -30,7 +30,13 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void UpdateHealth()
+    public void ResetToMax()
+    {
+        currentHealth = maxHealth;
+        UpdateHealth();
+    }
+
+    private void UpdateHealth()
     {
         if (healthBar == null) { return; }
         healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
