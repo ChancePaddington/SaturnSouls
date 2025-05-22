@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/2-3 Stage 2 Boss.unity
     guid: 9541196b9a7310c449636b5df64efc0b
   - enabled: 1
+    path: Assets/Scenes/3-3 Stage 3 Boss.unity
+    guid: 7cc126ae9bba87d42bdbdb631b6d0cfb
+  - enabled: 1
     path: Assets/Scenes/Tutorial Area.unity
     guid: c342093d6ebff8a47811855f431b149e
   m_configObjects:
