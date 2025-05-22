@@ -49,17 +49,16 @@ public class Shield : MonoBehaviour
         }
     }
 
-    public void DeactivateWithCooldown()
+    public void Disable()
     {
         timeSinceDeactivation = 0f;
+        canActivate = false;
         Deactivate();
     }
 
     public void Deactivate()
     {
         if (!isActive) { return; }
-
-        canActivate = false;
         Activate(false);
     }
 

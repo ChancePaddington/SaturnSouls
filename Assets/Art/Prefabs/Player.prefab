@@ -156,7 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   maxHealth: 20
-  currentHealth: 0
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -520,13 +519,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   maxHealth: 10
-  currentHealth: 0
   onDeath:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1204977998543204479}
         m_TargetAssemblyTypeName: Shield, Assembly-CSharp
-        m_MethodName: DeactivateWithCooldown
+        m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
