@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public Image ammoCapacity;
     private float ammoIsEmpty = 0f;
 
-    //reload timer (float)
+    public int gameOver;
 
     //Shield class
     [SerializeField] private Shield shield;
@@ -131,6 +131,12 @@ public class PlayerController : MonoBehaviour
     public void Deactivate()
     {
         Destroy(gameObject);
+        TransitionToGameOverScene();
+    }
+
+    public void TransitionToGameOverScene()
+    {
+        SceneController.LoadScene(gameOver);
     }
 
 }

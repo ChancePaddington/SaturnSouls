@@ -6,10 +6,13 @@ public class UIController : MonoBehaviour
     public List<GameObject> enemies;
 
     private GameObject[] enemy;
+    private GameObject player;
     public int nextScene;
+    //public int gameOver;
 
     public void Start()
     {
+        //player = GameObject.FindGameObjectWithTag("Player Controller");
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
         enemies.AddRange(enemy);
     }
@@ -40,6 +43,10 @@ public class UIController : MonoBehaviour
         {
             SceneController.LoadScene(nextScene);
         }
+        //else if (player == null)
+        //{
+        //    SceneController.LoadScene(gameOver);
+        //}
     }
 
     public void SceneLoad(int sceneIndex)

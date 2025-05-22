@@ -1834,6 +1834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75736032b2e64914f9c0fded8db74325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loopManager: {fileID: 0}
   soundFXObject: {fileID: 1365337687288258412, guid: ce080b914f4c44b4bbb9571b40ea2cfb, type: 3}
 --- !u!4 &623948086
 Transform:
