@@ -11,7 +11,7 @@ public class Shield : MonoBehaviour
 
     private bool isActive = false;
     private bool canActivate = true;
-    private float timeSinceDeactivation = 0f;
+    private float timeSinceDeactivation = Mathf.Infinity;
 
     private void Start()
     {
