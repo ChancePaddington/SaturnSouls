@@ -13,6 +13,11 @@ public class Shield : MonoBehaviour
     private bool canActivate = true;
     private float timeSinceDeactivation = Mathf.Infinity;
 
+    //Audio
+    [SerializeField] AudioClip rechargeSound;
+    [Range(1, 10)]
+    [SerializeField] float volume = 1f;
+
     private void Start()
     {
         Activate(false);
@@ -39,6 +44,7 @@ public class Shield : MonoBehaviour
         canActivate = true;
         shieldRecharge.fillAmount = 1f;
         health.ResetToMax();
+        SoundManager.instance.PlaySoundFXClip(rechargeSound, transform, volume);
     }
 
     public void TryActivate()

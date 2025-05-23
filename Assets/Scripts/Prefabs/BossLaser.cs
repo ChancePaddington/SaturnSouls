@@ -5,22 +5,27 @@ public class BossLaser : MonoBehaviour
 {
     [Range(1, 10)]
     [SerializeField] private float speed = 10f;
-
     [Range(1, 10)]
     [SerializeField] private float lifeTime = 6f;
-
-    //[SerializeField] List<string> selectedTags;
 
     private Rigidbody2D rb;
     private GameObject player;
     public float force = 1.0f;
     public int damage = 3;
 
+    //Audio
+    [SerializeField] AudioClip fireSound;
+    [Range(1, 10)]
+    [SerializeField] float volume = 1f;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.up * speed;
         player = GameObject.FindGameObjectWithTag("Player");
+
+        //Play sound FX
+        SoundManager.instance.PlaySoundFXClip(fireSound, transform, volume);
 
         if (player == null)
         {

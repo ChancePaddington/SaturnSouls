@@ -1,0 +1,324 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1071321385993437082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 10774700142368741}
+  m_Layer: 0
+  m_Name: Minion Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &10774700142368741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071321385993437082}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.32, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8527121401427645458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3392600621137848114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8527121401427645458}
+  - component: {fileID: 6964799159080455614}
+  - component: {fileID: 2060554531263734461}
+  - component: {fileID: 3298533275142168495}
+  - component: {fileID: 1485145814156616800}
+  - component: {fileID: -2176724851709060407}
+  m_Layer: 0
+  m_Name: Turret(Minion)
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8527121401427645458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392600621137848114}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.0062569417, w: 0.99998045}
+  m_LocalPosition: {x: -6.6, y: 0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4898521668089921207}
+  - {fileID: 10774700142368741}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.717}
+--- !u!212 &6964799159080455614
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392600621137848114}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -5497227692577714195, guid: 3abfb08682f009a48b484e0a080725d1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &2060554531263734461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392600621137848114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0111abcc61575e4ca41ffaa2c0afa8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserTimer: 2
+  rocketPrefab: {fileID: 7338467992025419840, guid: 0794a8e2b28e4a54ead3404518f46ed4, type: 3}
+  firingPoint: {fileID: 4898521668089921207}
+--- !u!114 &3298533275142168495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392600621137848114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5502878767e3b4798a77de385493c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  maxHealth: 6
+  hitSound: {fileID: 8300000, guid: 1e907f4dbcbe1b14c90ddbc638c14918, type: 3}
+  volume: 1
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2060554531263734461}
+        m_TargetAssemblyTypeName: Turret, Assembly-CSharp
+        m_MethodName: Deactivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!60 &1485145814156616800
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392600621137848114}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8456, y: 1.4696}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.0357, y: -0.1537}
+      - {x: 0.0357, y: -0.1409}
+      - {x: 0.050899997, y: -0.1415}
+      - {x: 0.0635, y: -0.1287}
+      - {x: 0.0629, y: -0.1135}
+      - {x: 0.0783, y: -0.114099994}
+      - {x: 0.0911, y: -0.0981}
+      - {x: 0.0905, y: -0.0859}
+      - {x: 0.105299994, y: -0.0859}
+      - {x: 0.10569999, y: -0.085499994}
+      - {x: 0.10569999, y: 0.070099995}
+      - {x: 0.1051, y: 0.0705}
+      - {x: 0.0625, y: 0.0705}
+      - {x: 0.061899997, y: 0.069699995}
+      - {x: 0.061899997, y: 0.0279}
+      - {x: 0.0515, y: 0.0435}
+      - {x: 0.0359, y: 0.043899998}
+      - {x: 0.035499997, y: 0.1389}
+      - {x: 0.0501, y: 0.1387}
+      - {x: 0.050899997, y: 0.1407}
+      - {x: 0.050699998, y: 0.18329999}
+      - {x: 0.0503, y: 0.1837}
+      - {x: -0.0503, y: 0.1837}
+      - {x: -0.050899997, y: 0.18349999}
+      - {x: -0.050899997, y: 0.1407}
+      - {x: -0.0497, y: 0.1389}
+      - {x: -0.035299998, y: 0.12529999}
+      - {x: -0.035499997, y: 0.0433}
+      - {x: -0.050699998, y: 0.043899998}
+      - {x: -0.061499998, y: 0.0287}
+      - {x: -0.061699998, y: 0.069299996}
+      - {x: -0.0629, y: 0.0705}
+      - {x: -0.105299994, y: 0.0705}
+      - {x: -0.10569999, y: 0.070099995}
+      - {x: -0.10569999, y: -0.0857}
+      - {x: -0.1055, y: -0.0859}
+      - {x: -0.0909, y: -0.0863}
+      - {x: -0.0909, y: -0.097899996}
+      - {x: -0.0897, y: -0.0985}
+      - {x: -0.0783, y: -0.0985}
+      - {x: -0.0783, y: -0.1131}
+      - {x: -0.0779, y: -0.1135}
+      - {x: -0.063099995, y: -0.1135}
+      - {x: -0.063099995, y: -0.1283}
+      - {x: -0.062699996, y: -0.1287}
+      - {x: -0.051099997, y: -0.1287}
+      - {x: -0.050899997, y: -0.1405}
+      - {x: -0.035499997, y: -0.1539}
+      - {x: -0.039499998, y: -0.1521}
+      - {x: -0.0521, y: -0.1541}
+      - {x: -0.0513, y: -0.1655}
+      - {x: -0.0625, y: -0.16589999}
+      - {x: -0.0633, y: -0.1679}
+      - {x: -0.063099995, y: -0.18329999}
+      - {x: -0.062699996, y: -0.1837}
+      - {x: 0.0625, y: -0.1837}
+      - {x: 0.063099995, y: -0.18349999}
+      - {x: 0.063099995, y: -0.1669}
+      - {x: 0.0501, y: -0.1537}
+  m_UseDelaunayMesh: 0
+--- !u!114 &-2176724851709060407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392600621137848114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5face0933dc31cc47a50fe3be8175baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionSpawnPoint: {fileID: 10774700142368741}
+  minionPrefab: {fileID: 4421294138403141104, guid: 66e4da059458d18448f3d181d13717fd, type: 3}
+  currentMinion: 0
+--- !u!1 &5196178915165586565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4898521668089921207}
+  m_Layer: 0
+  m_Name: Rocket Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4898521668089921207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196178915165586565}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.002, y: 0.194, z: 0}
+  m_LocalScale: {x: 0.86565, y: 0.86565, z: 0.86565}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8527121401427645458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

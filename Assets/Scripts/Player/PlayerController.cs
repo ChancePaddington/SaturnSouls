@@ -33,11 +33,18 @@ public class PlayerController : MonoBehaviour
 
     public int gameOver;
 
+    //Audio
+    [SerializeField] AudioClip reloadSound;
+    [Range(1, 10)]
+    [SerializeField] float volume = 1f;
+
     //Shield class
     [SerializeField] private Shield shield;
 
     //Health class
     [SerializeField] private Health health;
+
+    public Animator playerHurt;
 
     private void Start()
     {
@@ -104,6 +111,7 @@ public class PlayerController : MonoBehaviour
         //Refill ammo
         currentAmmo = maxAmmo;
         isReloading = false;
+        SoundManager.instance.PlaySoundFXClip(reloadSound, transform, volume);
     }
 
     public void HandleShieldInput()
@@ -132,6 +140,14 @@ public class PlayerController : MonoBehaviour
     public void TransitionToGameOverScene()
     {
         SceneController.LoadScene(gameOver);
+    }
+
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        if (otherCollider.CompareTag("Enemy"))
+        {
+        playerHurt.SetTrigger("Hit");
+        }
     }
 
 }

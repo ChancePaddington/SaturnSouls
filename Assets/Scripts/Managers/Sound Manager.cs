@@ -4,16 +4,20 @@ using UnityEngine.Rendering;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
-    public SoundLoopManager loopManager;
+
     [SerializeField] public AudioSource soundFXObject;
     [SerializeField] public AudioSource soundLoopFXObject;
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance != null)
         {
-            instance = this;
+            Destroy(gameObject);
+            return;
         }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
@@ -51,13 +55,5 @@ public class SoundManager : MonoBehaviour
 
         return audioSource;
     }
-
-    //In a new script (let's call this Loop Sound Activator)
-    //This new script would run SoundManager.PlayLoopFXSound()
-    //This script will need to store the instantiated audiosource as a variable
-    //In the minion script, when the minion is destroyed, it should also talk to the Loop Sound Activator
-    //And tell it to destroy the audiosource (which is has stored as a variable)
-
-    //The Loop Sound Activator should be added to the minion prefab
 
 }

@@ -23,6 +23,7 @@ public class Rocket : MonoBehaviour
         rb.linearVelocity = transform.up * speed;
 
         //Play sound FX
+        SoundManager.instance.PlaySoundFXClip(fireSound, transform, volume);//Play sound FX
         SoundManager.instance.PlaySoundFXClip(fireSound, transform, volume);
      
         //Destroys rocket when life time expires
