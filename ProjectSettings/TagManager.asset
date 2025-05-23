@@ -18,6 +18,7 @@ TagManager:
   - Meteor Waypoint D
   - Turret Waypoint A
   - Turret Waypoint B
+  - Music
   layers:
   - Default
   - TransparentFX

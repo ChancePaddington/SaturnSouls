@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: b1017d9c58b391845aa1ea0d86b388ee
+    path: Assets/Scenes/Title Card.unity
+    guid: 435dba1077f9e1848b9ea89e78388636
   - enabled: 1
     path: Assets/Scenes/1-1 Stage 1 Level 1.unity
     guid: 8a6545177b1d1284dacedb1b38fc113f
@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial Area.unity
     guid: c342093d6ebff8a47811855f431b149e
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: b1017d9c58b391845aa1ea0d86b388ee
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
