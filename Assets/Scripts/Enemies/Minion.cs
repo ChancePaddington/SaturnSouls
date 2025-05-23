@@ -51,7 +51,7 @@ public class Minion : MonoBehaviour
         //Play audio
         //SoundManager.instance.PlayLoopFXClip(alarmSound, transform, volume);
 
-        Destroy(gameObject, lifeTime);
+        Invoke("Deactivate", lifeTime);
         currentTarget = waypointA;
 
     }
@@ -96,21 +96,24 @@ public class Minion : MonoBehaviour
         if (otherCollider.GetComponent<PlayerController>() != null)
         {
             //Call Health class to deal damage to health bar
-            Health health = otherCollider.GetComponent<Health>();
-            if (health != null)
+            Health playerHealth = otherCollider.GetComponent<Health>();
+            if (playerHealth != null)
             {
-                health.TakeDamage(damage);
+                playerHealth.TakeDamage(damage);
             }
 
-            Destroy(gameObject);
+            Health health = GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(int.MaxValue);
+            }
         }
     }
 
     public void Deactivate()
     {
+        soundLoopManager.Stop();
         Destroy(gameObject);
-        //Destroy(soundLoop.explodeSound);
-        Destroy(soundManager.soundLoopFXObject);
     }
 
     private void OnDestroy()

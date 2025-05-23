@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour
     }
 
     //Another function which plays a looping clip
-    public void PlayLoopFXSound(AudioClip audioClip, Transform spawnTransform, float volume)
+    public AudioSource PlayLoopFXSound(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(soundLoopFXObject, spawnTransform.position, Quaternion.identity);
 
@@ -48,6 +48,8 @@ public class SoundManager : MonoBehaviour
         //Play sound
         float clipLength = audioSource.clip.length;
         audioSource.Play();
+
+        return audioSource;
     }
 
     //In a new script (let's call this Loop Sound Activator)

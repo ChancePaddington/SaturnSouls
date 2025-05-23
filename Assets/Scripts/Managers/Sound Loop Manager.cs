@@ -7,9 +7,15 @@ public class SoundLoopManager : MonoBehaviour
     [Range(1, 10)]
     [SerializeField] float volume = 1f;
 
+    private AudioSource audioSource;
+
     private void Start()
     {
-        SoundManager.instance.PlayLoopFXSound(explodeSound, transform, volume);
+        audioSource = SoundManager.instance.PlayLoopFXSound(explodeSound, transform, volume);
     }
 
+    public void Stop()
+    {
+        Destroy(audioSource.gameObject);
+    }
 }

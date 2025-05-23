@@ -187,7 +187,8 @@ MonoBehaviour:
   waypointA: {fileID: 0}
   waypointB: {fileID: 0}
   alarmSound: {fileID: 0}
-  soundLoopManager: {fileID: 0}
+  soundLoopManager: {fileID: 4346257757764235228}
+  soundManager: {fileID: 0}
   volume: 1
 --- !u!58 &21750094938047875
 CircleCollider2D:
@@ -266,6 +267,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee31101ad362f145bdfcd76dd3a2c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 8407226249759598315, guid: ac2d5771d601c5a42bbbcb86758984f3, type: 3}
   explodeSound: {fileID: 8300000, guid: 73cd385f015b8bc429d71cad3655f7dc, type: 3}
   volume: 1
