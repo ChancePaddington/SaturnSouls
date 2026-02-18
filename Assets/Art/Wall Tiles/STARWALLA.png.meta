@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      STARWALLA_0: 3435559913654853391
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
