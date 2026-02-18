@@ -7,18 +7,17 @@ public class Turret : MonoBehaviour
 {
     [Range (0f, 3f)]
     [SerializeField] private float laserTimer = 2f;
-    //private GameObject player;
     [SerializeField] private GameObject rocketPrefab;
-    [SerializeField] private Transform firingPoint; 
+    [SerializeField] private Transform firingPoint;
+    [SerializeField] private int pointsValue;
 
     private UIController uiCon;
-
-    //Tutorial UI
-    //public TextMeshProUGUI tutorialText;
+    //private ScoreManager scoreManager;
 
     private void Start()
     {
         uiCon = FindAnyObjectByType<UIController>();
+
         //Contols the amount of time between laser shots
         StartCoroutine(Shoot(laserTimer));
 
@@ -40,5 +39,6 @@ public class Turret : MonoBehaviour
     {
         uiCon.enemies.Remove(gameObject);
         Destroy(gameObject);
+        ScoreManager.Instance.AddPoints(pointsValue);
     }
 }

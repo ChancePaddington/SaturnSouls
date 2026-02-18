@@ -19,6 +19,7 @@ TagManager:
   - Turret Waypoint A
   - Turret Waypoint B
   - Music
+  - ScoreText
   layers:
   - Default
   - TransparentFX
