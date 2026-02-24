@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     private GameObject[] enemy;
     public int nextScene;
     public Image fadeImage;
+    public DialogueController dialogueController;
 
     private void Start()
     {
